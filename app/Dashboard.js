@@ -1,21 +1,6 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import Dashboard from './Dashboard';
-import AuthenticatedHome from './AuthenticatedHome';
-import { SignInButton, SignUpButton, useAuth } from '@clerk/nextjs';
 import Link from 'next/link';
 
-export default function Home() {
-  const { user, isLoaded, isSignedIn } = useAuth();
-
-  if (!isLoaded) {
-    return null; // or render a loading spinner
-  }
-
-  if (isSignedIn) {
-    return <AuthenticatedHome />;
-  }
+export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-purple-500 via-indigo-600 to-blue-700 flex items-center justify-center">
       <div className="max-w-4xl w-full bg-white bg-opacity-10 backdrop-blur-lg rounded-xl shadow-2xl p-8">
@@ -25,10 +10,10 @@ export default function Home() {
             <p className="text-xs text-gray-300">Originated in Abu Dhabi, UAE</p>
           </div>
           <div className="hidden sm:mt-10 sm:flex lg:mt-0 lg:grow lg:basis-0 lg:justify-end">
-          <div className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" >
-          <SignInButton/></div>
-            <div className="ml-3 inline-flex items-center rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600" href="/signup">
-            <SignUpButton/></div>
+            <Link className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" href="/signin">
+            Sign In</Link>
+            <Link className="ml-3 inline-flex items-center rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600" href="/signup">
+            Sign up</Link>
           </div>
         </header>
 
